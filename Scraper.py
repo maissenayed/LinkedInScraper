@@ -47,6 +47,10 @@ def scrap(browser):
             'span', {'class': 'pv-entity__secondary-title'}):
             company['name'] = tag.find(
                 'span', {'class': 'pv-entity__secondary-title'}).get_text()
+        if tag.find(
+                'span', {'class': 'pv-entity__location'}):
+            company['name'] = tag.find(
+                'span', {'class': 'pv-entity__location'}).get_text()
         for el in tag.find_all('h4', {'class': 'pv-entity__date-range'}):
             for eli in el.find_all('span'):
                 time_work.append(eli.get_text())
