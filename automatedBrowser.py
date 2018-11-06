@@ -44,7 +44,7 @@ while count < 100:
     browser.execute_script("window.scrollBy(0,-1000)")
 
 
-    if count==50:
+    if count==0:
         browser.find_element_by_class_name(
             'pv-top-card-v2-section__link--connections').click()
         print('clicked')

@@ -43,14 +43,18 @@ def scrap(browser):
     for tag in all_div:
         company = {}
         time_work = []
+        location=[]
         if tag.find(
             'span', {'class': 'pv-entity__secondary-title'}):
             company['name'] = tag.find(
                 'span', {'class': 'pv-entity__secondary-title'}).get_text()
-        if tag.find(
-                'span', {'class': 'pv-entity__location'}):
-            company['name'] = tag.find(
-                'span', {'class': 'pv-entity__location'}).get_text()
+        company['job_title'] = tag.find(
+            'h3', {'class': 't-bold'}).get_text()
+        
+        for el in tag.find_all('h4', {'class': 'pv-entity__location'}):
+            for eli in el.find_all('span'):
+                location.append(eli.get_text())
+        company['location'] = location
         for el in tag.find_all('h4', {'class': 'pv-entity__date-range'}):
             for eli in el.find_all('span'):
                 time_work.append(eli.get_text())

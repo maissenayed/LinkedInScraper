@@ -1,6 +1,6 @@
 
 
-username = "user@gmail.com"
+username = "use.gmail.com"
 password = "password"
 def GetUserName():
     return username
